@@ -2,9 +2,10 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-
+import categoryRoutes from './routes/admin/categoryRoutes.js'
 import authRoutes from "./routes/authRoutes.js";
 import productRoutes from './routes/admin/productRoutes.js'
+
 dotenv.config();
 
 const app = express();
@@ -18,6 +19,7 @@ app.use(cors());
 
 app.use("/api/auth", authRoutes);
 app.use('/api/products', productRoutes);
+app.use('/api/category', categoryRoutes);
 // Health check
 app.get("/", (req, res) => {
   res.send("API is running...");
